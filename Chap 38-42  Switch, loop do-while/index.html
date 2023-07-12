@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style> h4{ text-align: center;}  
+    </style>
+<body>
+    <h4> ------------------ Chap 38-42(FUNCTIONS, SWITCH STATEMENTS, WHILE… DO-WHILE LOOPS)------------------- </h4>
+
+    <p> Task# 1. Write a custom function power (a,b), to calculate the value of a raised to b. </p>
+    <p><b> Solution </b>      
+      <script>
+            function power (a,b){
+                return a** b;
+            }
+            let a = 2; b = 3;   
+            // power(a,b)
+        </script>
+      power raised<b> a <sup>b</sup></b> is:  <b>2 <sup>3</sup> </b>
+        <script> document.write( '=>' ,power(a,b));  </script> </p>
+     
+
+    <p> Task# 2. Any year is entered through the keyboard. Write a function to determine whether the year is a leap year or not.
+        <!-- Leap years ..., 2012, 2016, 2020 --> </p>
+   <p><b> Solution </b>     
+        <script>   
+            function leapyear( year){
+                if ( year % 4 === 0){
+                    alert("Yes "+ year + " is leap year" )
+                } else {
+                    alert( "No!! Sorry "+ year + " is not a leap year")
+                }
+                return year 
+                }
+            // let year = [ 2000, 2004, 2008, 2012, 2016, 2020, 2024]
+            //  let year = (prompt("Enter the year to check if the year is leap year or not"))
+            // leapyear(year)
+        </script>
+   </p>
+
+    <p>Task# 3. If the lengths of the sides of a triangle are denoted by a, b, and c, then area of triangle is given by
+        area = S(S − a)(S − b)(S − c) where, S = ( a + b + c ) / 2 .Calculate area of triangle using 2 functions </p>    
+    <p><b> Solution </b> 
+        
+        <script>
+            function calS( a, b, c){
+            let  S = ( a + b + c) / 2
+                return S;
+            }
+            function AreaOFTriangle( a, b, c) {
+                S = calS( a, b, c);
+                area = S* (S - a) * ( S - b) * (S - c) 
+                return  
+            }
+            AreaOFTriangle(8, 12, 6 );
+            document.write('<b>Area of triangle is: </b>' , area);
+       </script>
+   </p>
+
+    <p> Task# 4. Write a function that receives marks received by a student in 3 subjects and returns the average and percentage of these
+        marks. There should be 3 functions one is the mainFunction and other are for average and percentage. Call those functions
+        from mainFunction and display result in mainFunction. </p>
+   <p><b> Solution </b>        
+        <script>
+            function calculateAverage(math, art, computer) {
+                var average = (math + art + computer) / 3;
+                return average;
+            }
+
+            function calculatePercentage(math, art, computer) {
+                var totalMarks = 300;
+                var obtainedMarks = math + art + computer;
+                var percentage = (obtainedMarks / totalMarks) * 100;
+                return percentage.toFixed(2); // Limiting the percentage to 2 decimal places
+            }
+
+            function main(math, art, computer) {
+                var averageMarks = calculateAverage(math, art, computer);
+                var percentage = calculatePercentage(math, art, computer);
+
+                document.write("Average Marks: " + averageMarks + "<br>");
+                document.write("Percentage: " + percentage + "%<br>");
+            }
+            main(99, 44, 96);
+      </script>
+   </p>  
+
+    <p> Task# 5. You have learned the function indexOf. Code your own custom function that will perform the same functionality. You can code for single character as of now.</p>
+        <p><b> Solution </b> 
+          <script> 
+                function index () {
+                    let x = "Strawberry" ;
+                    let z =  x.indexOf('b');
+                    return document.write( 'The index of<b> b </b> in', x ,' is: <b>', z, '</b>' ) ;
+                }
+                 index();
+            </script>
+        </p>
+
+        <p> Task# 6. Write a function to delete all vowels from a sentence. Assume  that the sentence is not more than 25 characters long.</p>
+        <p><b> Solution </b>        
+            <script> 
+             function delVowels(){
+                        sent = "A quick brown fox jumps over the lazy dog ";
+                        document.write('The sentence is: ', sent, '<br>' );
+                        sent = sent.replace(/a/g, "");
+                        sent = sent.replace(/e/g, "");
+                        sent = sent.replace(/i/g, "");
+                        sent = sent.replace(/o/g, "");
+                        sent = sent.replace(/u/g, "");
+                        document.write('Without Vowels: ', sent)
+              }
+                    delVowels();
+          </script>
+      </p>
+
+        <p> Task# 7. Write a function with switch statement to count the number of occurrences of any two vowels in succession in a line of text.
+            For example, in the sentence “Pleases read this application and give me gratuity”. Such occurrences are ea, ea, ui.</p>
+           
+        <p><b> Solution </b> 
+            <script>
+            function numberOfOccurrence(){
+                    let count = 0;
+                    sentence = sentence.toLowerCase();
+                for (let i= 0; i< sentence.length-1; i++){
+                            let char = sentence[i];
+                            let nextChar = sentence[i + 1];                
+                    switch (char) {
+                        case 'a':
+                        case 'e':
+                        case 'i':
+                        case 'o':
+                        case 'u':    
+                            switch (nextChar){
+                                case 'a':
+                                case 'e':
+                                case 'i':
+                                case 'o':
+                                case 'u':
+                                    count++;
+                                    break
+                            }
+                        break;
+                    }
+                }
+                return count;
+            }
+                let sentence = "Please read this application and give me gratuity";
+                let occurrences =  numberOfOccurrence(sentence); 
+                document.write( "The sentence ","<b>" ,sentence, " </b>","occurrences of two vowels are: " + occurrences);
+          </script>
+      </p>
+            
+            
+
+    <p>Task# 8. The distance between two cities (in km.) is input through the keyboard. Write four functions to convert and print this distance in meters, feet, inches and centimeters. </p>
+        
+    <p><b> Solution </b> 
+        <script>
+            function meters(distance) {
+                    var convert = distance * 1000;
+                    document.write("Distance in meters: " + convert + " meters<br>");
+                }    
+                function feet(distance) {
+                    var convert = distance * 3280.84;
+                    document.write("Distance in feet: " + convert + " feet<br>");
+                }
+                function inches(distance) {
+                    var convert = distance * 39370.08;
+                    document.write("Distance in inches: " + convert + " inches<br>");
+                }
+                
+                function cm(distance) {
+                    var convert = distance * 100000;
+                    document.write("Distance in centimeters: " + convert + " cm<br>");
+                }
+                let distance = 2500;
+                distanceCalc(distance);
+                
+                function distanceCalc(distance) {
+                    meters(distance);
+                    feet(distance);
+                    inches(distance);
+                    cm(distance);
+                }
+       </script>
+    </p> 
+
+    <p> Task# 9. Write a program to calculate overtime pay of employees. Overtime is paid at the rate of Rs. 12.00 per hour for every hour worked above 40 hours. Assume that employees do not work for fractional part of an hour.</p>
+    <p><b> Solution </b> 
+        <script>
+                let hourlyRate = 12.00;
+                let regularHours = 40;
+                let extraHours = 55;
+                let overtimePay = 0;
+                if (extraHours > regularHours) {
+                        let overtimeHours = extraHours - regularHours;
+                        overtimePay = overtimeHours * hourlyRate;
+                        document.write("Overtime pay: Rs. " + overtimePay);
+                } 
+                else {
+                  document.write("Sorry, no overtime pay for employees who worked less than 40 hours extra.");
+                }
+      </script>
+    </p> 
+
+       
+    <p>Task# 10. A cashier has currency notes of denominations 10, 50 and 100. If the amount to be withdrawn is input through the keyboard in hundreds, find the total number of currency notes of each denomination the cashier will have to give to the withdrawer. </p>
+    <p><b> Solution </b> 
+            <p>Enter amount to withdraw: </p>
+            <input  id="withdrawAmount" />
+            <button onclick="calculateNotes()">Calculate</button>
+            <div id="result"> Result Here: </div>
+
+      <script>
+            function calculateNotes() {
+                withdrawAmount = document.getElementById("withdrawAmount").value;
+                hundNotes = parseInt((withdrawAmount / 100) );
+                amountLeft = withdrawAmount % 100;
+                fiftyNotes = parseInt((amountLeft / 50) );
+                amountLeft = amountLeft % 50;
+                tenNotes = parseInt((amountLeft / 10) );
+                result = "You have " + hundNotes + " hundred notes, " + fiftyNotes + " fifty notes, and " + tenNotes + " ten notes.";
+                document.getElementById("result").innerHTML = result;
+            }
+      </script>
+   </p>    
+ <p> The End!!!! </p>
+
+
+</body>
+</html>
