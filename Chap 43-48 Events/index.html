@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <style>
+    *{box-sizing: border-box; margin: 10; } h4{ margin-left: 30px;}
+    body{ background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);}
+    button{ color: blue; background-color: pink;border: none; box-sizing: border-box; padding: 5px; font-weight:600;}
+    h1,h3{ text-align: center;  color: palevioletred;}
+    #imgs{  display: flex; justify-content: center; }
+    p{font-size: large; }
+    #picture{  display: flex;  justify-content: center;}
+    .table{ display: flex; justify-content: center;}
+    #Counter{ display: flex;  flex-direction: column; justify-content: center; align-items: center;}
+    #Counter p{  color: rebeccapurple;}
+  </style> 
+
+  <h3> ------------------------ Chapter 43-48 EVENTS -----------------------------</h3>
+  <h4>1. Show an alert box on click on a link.</h4>
+    <script>
+        document.write( "<p><a href='#' onclick = alert('Hey!') > Click </a></p> <br> <br>" )
+   </script>
+
+  <h4> 2. Display some Mobile images in browser. On click on an image Show the message in alert to user.</h4>
+
+    <h1>Mobile Phone Lookup</h1>      
+    <div id="imgs">
+        <img src="https://images.samsung.com/is/image/samsung/assets/pk/2208/pcd/smartphones/PCD_Galaxy_Z_KV_LNB_pc.png?$N_96_PNG$" alt=""style="height: 200px;height: 200px;" onclick="thanks()">
+        
+        <img src="https://images.samsung.com/is/image/samsung/p6pim/pk/sm-a042fzcdmeb/gallery/pk-galaxy-a04e-sm-a042-sm-a042fzcdmeb-thumb-537142136?$172_172_PNG$" alt="" style="height: 200px;height: 200px;" onclick="thanks()">
+
+        <img src="https://images.samsung.com/is/image/samsung/p6pim/pk/sm-s918bzeqmea/gallery/pk-galaxy-s23-s918-452328-sm-s918bzeqmea-thumb-535503883?$172_172_PNG$" alt="" style="height: 200px;height: 200px;" onclick="thanks()">
+
+        <img src="https://images.samsung.com/is/image/samsung/p6pim/pk/sm-f936bzagpkd/gallery/pk-galaxy-z-fold4-f936-430705-sm-f936bzagpkd-thumb-537472919?$172_172_PNG$" alt="" style="height: 200px;height: 200px;" onclick="thanks()">
+       <script>
+          function thanks(){
+              alert('Thanks purchasing phone from us')
+          }
+       </script>
+    </div>
+
+
+  <h4> 3. Display 10 student records in table and each row should contain a delete button. If you click on a button to delete a record, entire row should be deleted. </h4>
+    <div class="table" >
+      <table id="studentTable">
+        <tr>
+          <th>Index</th>
+          <th>Student Name</th>
+          <th>Class </th>
+          <th>Delete Row</th>
+        </tr>
+      </table>
+     <script>
+       var students = [
+        { index: 0,name: "Jenny ",  class: "10" },
+        { index: 1,name: "Lisa ",   class: "10" },
+        { index: 2,name: "Rose ",   class: "8" },
+        { index: 3,name: "Jisoo ",  class: "8" },
+        { index: 4,name: "Black",  class: "6" },
+        { index: 5,name: "Pink ",  class: "6" },
+        { index: 6,name: "Taylor", class: "10" },
+        { index: 7,name: "Swift",  class: "8" },
+        { index: 8,name: "Jimin",  class: "10" },
+        { index: 9,name: "Jungkook",class: "8" }
+      ];
+          function generateTable() {
+          var table = document.getElementById("studentTable");
+
+          for (var i = 0; i < students.length; i++) {
+            var row = table.insertRow();
+
+            var indexCell = row.insertCell();
+            indexCell.innerHTML = students[i].index;
+
+            var nameCell = row.insertCell();
+            nameCell.innerHTML = students[i].name;
+
+            var classCell = row.insertCell();
+            classCell.innerHTML = students[i].class;
+
+            var deleteCell = row.insertCell();
+            var deleteButton = document.createElement("button");
+            deleteButton.innerHTML = "Delete";
+            deleteButton.addEventListener("click", createDeleteHandler(i));
+            deleteCell.appendChild(deleteButton);
+          }
+        }
+
+        function createDeleteHandler(index) {
+          return function () {
+            var table = document.getElementById("studentTable");
+            table.deleteRow(index + 1);
+          };
+        }
+
+        generateTable();
+
+      </script>      
+    </div>
+
+ <h4>  4. Display an image in browser. Change the picture on mouseover and set the first picture on mouseout.</h4>
+    <div id="picture">
+         <img src="https://image.winudf.com/v2/image1/Y29tLmFuZGlob2xhbmkuYmxhY2twaW5rd2FsbHBhcGVyc19zY3JlZW5fMF8xNTYyODg2ODU0XzAyNA/screen-0.webp?fakeurl=1&type=.webp" alt="" height="300px" onmouseout="src='https://play-lh.googleusercontent.com/wp1A_rRRDyyfNV0zdx71PI_7KXLPNm_rXvlZl7rbtWYUygkccd_JsSxjIVVuKe2GyZE'" onmouseover=" src='https://image.winudf.com/v2/image1/Y29tLmFuZGlob2xhbmkuYmxhY2twaW5rd2FsbHBhcGVyc19zY3JlZW5fMF8xNTYyODg2ODU0XzAyNA/screen-0.webp?fakeurl=1&type=.webp'"> 
+   </div>
+
+ <h4> 5. Show a counter in browser. Counter should increase on click on increase button and decrease on click on decrease button. And show updated counter value in browser.</h4>
+    <div id="Counter">
+        <button onclick="increase()">Increase</button>
+        <p>Counter: <span id="counter">0</span></p> 
+        <button onclick="decrease()">Decrease</button>
+    
+      <script>
+          function increase() {
+          var value = document.getElementById("counter").innerHTML
+          value = parseInt(value)
+          console.log(value)
+          value = value + 1
+          document.getElementById("counter").innerHTML = value
+        }
+        function decrease() {
+          var value = document.getElementById("counter").innerHTML
+          value = parseInt(value)
+          value = value - 1
+          document.getElementById("counter").innerHTML = value
+        }
+
+      </script>
+    </div>
+  <h6>The End!!!!</h6>  
+</body>
+
+</html>
+
+
