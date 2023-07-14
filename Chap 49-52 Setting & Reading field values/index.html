@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body> 
+     <h2> Chap 49-52(EVENTS) </h2>
+
+  <h3>   Task# 1  Create a signup form and display form data in your web page on submission. </h3>
+    <h5> Solution: </h5>  
+        <fieldset>
+            <form action="">
+                    <label for="name"> Name: </label>
+                    <input type="text" id="name">
+                    <label for=""> Class: </label>
+                    <input type="text" id="class">
+                    <label for=""> Email: </label>
+                    <input type="email" id="email">
+                    <label for=""> Mobile Number:</label>
+                    <input type="Mobile-No" id="MobileNo">
+                    <label for="city"> City: </label>
+                    <input type="text" id="city">
+                    <button type="submit" value="submit" onclick="signup()"> Submit </button>
+            </form>
+      </fieldset>
+    <script>
+        function signup(){
+            let userName = document.getElementById('name').value;
+            let userClass = document.getElementById('class').value;
+            let userEmail = document.getElementById('email').value;
+            let userMobile = document.getElementById('MobileNo').value;
+            let  userCity = document.getElementById("city").value;
+
+            document.write("<h1> Your submitted Information </h1> <b>Fist Name: ",userName,"<br> Class:" ,userClass,"<br> Email: ",userEmail,"<br> Mobile No: ",userMobile,"<br> City:  </b>", userCity);
+        }
+    </script>
+
+    <h3> Task# 2 Suppose in your webpage there is content area in which you have entered your item details, but user can only see some details on first look. When user clicks on “Read more" </h3>
+     <h5> Solution: </h5>  
+        <p id="para"> <q> Want to see something fun about programmers? </q> <button onclick="readMore()" > Read More</button></p>
+    <script>
+        function readMore(){
+            let fullText = "'Stay calm and code on, even if your loops are loopy!' " + "'Programming: where every semicolon counts, and every bug is an opportunity to learn!' " + " 'Beginner programmer: where syntax errors become stepping stones to success!' " ;
+            let para = document.getElementById('para');
+            para.innerText = fullText;
+        }
+    </script>   
+
+    <h3>Task# 3 In previous assignment you have created a tabular data using javascript. Let’s modify that. Create a form which takes student’s details and show each student detail in table. Each row of table must contain a delete button and an edit button. On click on delete button entire row should be deleted. On click on edit button, a hidden form will appear with the values of that row. </h3>
+
+     <h5> Solution: </h5>  
+             <style>
+                    table {
+                        width: 50%;
+                        text-align: center;
+                        border-collapse: collapse;
+                    }
+                    table, th, td {
+                        border: 1px solid black;
+                    }
+                    th, td {
+                        padding: 8px;
+                        text-align: left;
+                    }
+                </style>
+
+    <h4>Student Details</h4>
+
+        <form id="studentForm">
+            <label for="name">Student Name:</label>  <input type="text" id="name">
+            <label for="age">Student Age:</label>    <input type="number" id="age">
+            <button type="button" onclick="addStud()">Add Student</button>
+        </form>
+
+        <table id="recordTable">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Edit/Delete</th>
+            </tr>
+        </table>
+
+        <div id="editForm" style="display: none; #editForm:hover:display::after;" >
+            <h3>Edit Student</h3>
+            <label for="editName"> Name:</label>  <input type="text" id="editName">
+            <label for="editAge"> Age:</label>  <input type="number" id="editAge">
+            <button type="button" id="saveBtn">Save</button>
+        </div>
+
+        <script>
+
+            function addStud() {
+                var name = document.getElementById('name').value;
+                var age = document.getElementById('age').value;
+
+                var table = document.getElementById('recordTable');
+                var row = table.insertRow();
+
+                var nameCell = row.insertCell(0);
+                var ageCell = row.insertCell(1);
+                var editDelCell = row.insertCell(2);
+
+                nameCell.innerHTML = name;
+                ageCell.innerHTML = age;
+
+                var delbtn = document.createElement('button');
+                delbtn.innerHTML = 'Delete';
+                delbtn.addEventListener('click', function() {
+                    delRow(row);
+                });
+                editDelCell.appendChild(delbtn);
+
+                var editbtn = document.createElement('button');
+                editbtn.innerHTML = 'Edit';
+                editbtn.addEventListener('click', function() {
+                    editRow(row);
+                });
+                editDelCell.appendChild(editbtn);
+
+                document.getElementById('name').value = '';
+                document.getElementById('age').value = '';
+            }
+
+            function delRow(row) {
+                var table = document.getElementById('recordTable');
+                table.deleteRow(row.rowIndex);
+            }
+
+            function editRow(row) {
+                var nameCell = row.cells[0];
+                var ageCell = row.cells[1];
+
+                var currentName = nameCell.innerHTML;
+                var currentAge = ageCell.innerHTML;
+
+                document.getElementById('editName').value = currentName;
+                document.getElementById('editAge').value = currentAge;
+
+                document.getElementById('editForm').style.display = 'block';
+
+                document.getElementById('saveBtn').onclick = function() {
+                    var newName = document.getElementById('editName').value;
+                    var newAge = document.getElementById('editAge').value;
+
+                    nameCell.innerHTML = newName;
+                    ageCell.innerHTML = newAge;
+                    document.getElementById('editForm').style.display = 'none';
+                };
+            } 
+       </script>
+
+   <h5>  !!! End of Chapter49-52 !!! <br> The End!!!!</h5> 
+
+
+</body>
+</html>
