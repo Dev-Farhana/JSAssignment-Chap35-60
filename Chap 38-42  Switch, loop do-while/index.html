@@ -122,36 +122,28 @@
            
         <p><b> Solution </b> 
             <script>
-            function numberOfOccurrence(){
+                let sentence = "Please read this application and give me gratuity";
+            function numberOfOccurrence(vowelCount){
                     let count = 0;
-                    sentence = sentence.toLowerCase();
-                for (let i= 0; i< sentence.length-1; i++){
-                            let char = sentence[i];
-                            let nextChar = sentence[i + 1];                
+                vowelCount = vowelCount.toLowerCase();
+        for (let i= 0; i < vowelCount.length; i++){
+            let char = vowelCount[i];
                     switch (char) {
                         case 'a':
                         case 'e':
                         case 'i':
                         case 'o':
                         case 'u':    
-                            switch (nextChar){
-                                case 'a':
-                                case 'e':
-                                case 'i':
-                                case 'o':
-                                case 'u':
-                                    count++;
-                                    break
-                            }
+                          count++;
+                        console.log(char);
                         break;
                     }
                 }
                 return count;
             }
-                let sentence = "Please read this application and give me gratuity";
                 let occurrences =  numberOfOccurrence(sentence); 
-                document.write( "The sentence ","<b>" ,sentence, " </b>","occurrences of two vowels are: " + occurrences);
-          </script>
+ document.write( "The sentence ","<br><b>'",sentence, "</b>'<br>","occurrences of two vowels are: " + occurrences);
+             </script>
       </p>
             
             
